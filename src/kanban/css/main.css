@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    overflow-y: hidden;
+    background: #0079BF;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.wrapper {
+    padding-left: 4rem;
+    padding-right: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header {
+    background-color: #0067A3;
+    flex-grow: 0;
+    padding: 1rem 0;
+}
+
+.header-wrapper {
+    margin: 0 auto;
+}
+
+.header-title {
+    font-size: 28px;
+    color: #FFFFFF;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.header-elem {
+    position: absolute;
+    left: -47px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-elem__item {
+    display: flex;
+    margin: 1px 0;
+    align-items: center;
+}
+
+.header-elem__circle {
+    border: 2px solid white;
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+}
+
+.header-elem__line {
+    background: #FFFFFF;
+    width: 20px;
+    border: 1px solid white;
+    margin-left: 5px;
+}
+
+.header-users {
+    display: flex;
+    align-items: center;
+}
+
+.header-btn {
+    background: #FFFFFF;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    padding-right: 20px;
+    margin-right: 3.5rem;
+    max-height: 35px;
+    height: 100%;
+}
+.header-btn__icon{
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: 13px;
+}
+
+.header-avatar{
+    position: relative;
+
+}
+
+.header-avatar__pic {
+    border-radius: 50%;
+}
+
+.header-avatar__icon{
+    display: inline-block;
+    width: 10px;
+    height: 8px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -14px;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.footer {
+    background-color: #0067A3;
+    flex-grow: 0;
+    position: relative;
+    top: 1px;
+}
+
+.footer-tasks {
+    display: flex;
+}
+
+.footer-tasks .footer-txt:first-child {
+    padding-right: 2rem;
+}
+
+.footer-txt {
+    font-size: 18px;
+    color: #FFFFFF;
+    padding: 1rem 0;
+}
+
+.footer-txt__data {
+    text-transform: uppercase;
+}

@@ -1,0 +1,6 @@
+.hover-opacity{
+    opacity: 1;
+}
+.hover-opacity:hover{
+    opacity: 0.6;
+}

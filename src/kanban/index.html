@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kanban</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="header">
+    <div class="header-wrapper wrapper">
+      <h1 class="header-title">
+        <div class="header-elem">
+          <div class="header-elem__item">
+            <span class="header-elem__circle"></span>
+            <span class="header-elem__line"></span>
+          </div>
+          <div class="header-elem__item">
+            <span class="header-elem__circle"></span>
+            <span class="header-elem__line"></span>
+          </div>
+          <div class="header-elem__item">
+            <span class="header-elem__circle"></span>
+            <span class="header-elem__line"></span>
+          </div>
+        </div>
+        Awesome Kanban Board
+      </h1>
+      <div class="header-users">
+        <button class="header-btn hover-opacity">
+          <svg class="header-btn__icon">
+            <use xlink:href="img/sprite.svg#add"></use>
+          </svg>
+          Create new list
+        </button>
+        <a href="#" class="header-avatar">
+          <img src="img/user-avatar.jpg" class="header-avatar__pic" alt="avatar">
+          <svg class="header-avatar__icon">
+            <use xlink:href="img/sprite.svg#arrow"></use>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+
+  </main>
+  <footer class="footer">
+    <div class="footer-wrapper wrapper">
+      <div class="footer-tasks">
+        <p class="footer-txt">Active tasks:
+          &lt;<span class="footer-txt__data">N&gt;</span></p>
+        <p class="footer-txt">Finished tasks:
+          &lt;<span class="footer-txt__data">M&gt;</span></p>
+      </div>
+      <div class="">
+        <p class="footer-txt"> Kanban board by
+          &lt;<span class="footer-txt__data">NAME</span>&gt;,
+          &lt;<span>YEAR&gt;</span></p>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
