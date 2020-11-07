@@ -6,29 +6,17 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Kanban</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<object type="image/svg+xml" data="img/sprite.svg" class="d-none"></object>
 <div class="wrap">
   <header class="header">
     <div class="header-wrapper wrapper">
       <div class="header-box">
-        <div class="header-elem hover-opacity">
-          <div class="header-elem__item">
-            <span class="header-elem__circle"></span>
-            <span class="header-elem__line"></span>
-          </div>
-          <div class="header-elem__item">
-            <span class="header-elem__circle"></span>
-            <span class="header-elem__line"></span>
-          </div>
-          <div class="header-elem__item">
-            <span class="header-elem__circle"></span>
-            <span class="header-elem__line"></span>
-          </div>
-        </div>
+        <svg class="header-box__icon">
+          <use xlink:href="img/sprite.svg#title-icon"></use>
+        </svg>
         <h1 class="header-title">Awesome Kanban Board</h1>
       </div>
       <div class="header-users">
@@ -65,6 +53,5 @@
     </div>
   </footer>
 </div>
-<script src="js/main.js"></script>
 </body>
 </html>

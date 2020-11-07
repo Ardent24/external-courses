@@ -18,6 +18,10 @@ body {
     height: 100%;
 }
 
+.d-none {
+    display: none;
+}
+
 .wrapper {
     padding-left: 4rem;
     padding-right: 1.4rem;
@@ -27,7 +31,6 @@ body {
 
 .header {
     background-color: #0067A3;
-    flex-grow: 0;
     padding: 1rem 0;
 }
 
@@ -41,40 +44,19 @@ body {
     align-items: center;
 }
 
+.header-box__icon {
+    max-width: 2.3rem;
+    max-height: 2.3rem;
+    display: inline-block;
+    position: absolute;
+    left: -2.8rem;
+}
+
 .header-title {
     font-size: clamp(1.5rem, 2.5vw, 2rem);
     font-weight: normal;
     color: #FFFFFF;
     text-shadow: 1px 1px 1px black;
-}
-
-.header-elem {
-    position: absolute;
-    left: -47px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-}
-
-.header-elem__item {
-    display: flex;
-    margin: 1px 0;
-    align-items: center;
-}
-
-.header-elem__circle {
-    border: 2px solid white;
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-}
-
-.header-elem__line {
-    background: #FFFFFF;
-    width: 20px;
-    border: 1px solid white;
-    margin-left: 5px;
 }
 
 .header-users {
@@ -104,7 +86,6 @@ body {
     width: 1.3rem;
     height: 1.3rem;
     margin-right: 13px;
-
 }
 
 .header-avatar {
@@ -161,9 +142,7 @@ body {
 
 .footer {
     background-color: #0067A3;
-    flex-grow: 0;
     position: relative;
-    top: 1px;
 }
 
 .footer-tasks {
