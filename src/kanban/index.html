@@ -14,8 +14,8 @@
 <div class="wrap">
   <header class="header">
     <div class="header-wrapper wrapper">
-      <h1 class="header-title">
-        <div class="header-elem">
+      <div class="header-box">
+        <div class="header-elem hover-opacity">
           <div class="header-elem__item">
             <span class="header-elem__circle"></span>
             <span class="header-elem__line"></span>
@@ -29,8 +29,8 @@
             <span class="header-elem__line"></span>
           </div>
         </div>
-        Awesome Kanban Board
-      </h1>
+        <h1 class="header-title">Awesome Kanban Board</h1>
+      </div>
       <div class="header-users">
         <button class="header-btn hover-opacity">
           <svg class="header-btn__icon">
@@ -38,12 +38,12 @@
           </svg>
           Create new list
         </button>
-        <a href="#" class="header-avatar">
+        <div class="header-avatar hover-opacity header-avatar__js">
           <img src="img/user-avatar.jpg" class="header-avatar__pic" alt="avatar">
           <svg class="header-avatar__icon">
             <use xlink:href="img/sprite.svg#arrow"></use>
           </svg>
-        </a>
+        </div>
       </div>
     </div>
   </header>
@@ -58,11 +58,10 @@
         <p class="footer-txt">Finished tasks:
           &lt;<span class="footer-txt__data">M&gt;</span></p>
       </div>
-      <div class="">
-        <p class="footer-txt"> Kanban board by
-          &lt;<span class="footer-txt__data">NAME</span>&gt;,
-          &lt;<span>YEAR&gt;</span></p>
-      </div>
+      <p class="footer-txt"> Kanban board by
+        &lt;<span class="footer-txt__data">NAME</span>&gt;,
+        &lt;<span>YEAR&gt;</span>
+      </p>
     </div>
   </footer>
 </div>
