@@ -1,0 +1,28 @@
+@import "reset.css";
+@import "main.css";
+
+.hover-opacity {
+    opacity: 1;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.hover-opacity:hover {
+    opacity: 0.6;
+}
+
+.hover-color {
+    transition: .5s;
+}
+
+.hover-color:hover {
+    color: #0079BF;
+}
+
+.header-avatar__icon.active {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.header-dropdown.active {
+    transform: translateY(0) scale(1);
+}
