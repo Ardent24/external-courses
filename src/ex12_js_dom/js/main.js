@@ -4,6 +4,16 @@ const btnNext = document.querySelector('.slider-next');
 
 let count = 0;
 
+document.addEventListener('keydown', (event) => {
+  if (event.keyCode === 9) {
+    event.preventDefault();
+
+    if (btnPrev == event.target) btnNext.focus();
+    if (btnNext == event.target) btnPrev.focus();
+  }
+});
+
+
 btnPrev.addEventListener('click', () => {
   arrayImg[count].classList.remove('active');
   count--;
