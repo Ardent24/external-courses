@@ -23,6 +23,16 @@
     transform: translateY(-50%) rotate(180deg);
 }
 
-.header-dropdown.active {
-    transform: translateY(0) scale(1);
+.header-dropdown.hide{
+    transition: transform .2s;
+    transform: translateY(-300px) scale(0);
+}
+
+@keyframes createDropdown {
+    from {
+        transform: translateY(-300px) scale(0);
+    }
+    to {
+        transform: translateY(0) scale(1);
+    }
 }

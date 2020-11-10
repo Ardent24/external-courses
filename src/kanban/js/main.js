@@ -1,37 +1,45 @@
 const btnAvatar = document.querySelector('.header-avatar__js');
 const arrowAvatar = btnAvatar.querySelector('.header-avatar__icon');
 const boxDropdown = document.querySelector('.header-users');
-const createDropdown = (items = 3) => {
-  const ul = document.createElement('ul');
-  const allLinks = boxDropdown.getElementsByClassName('header-dropdown__link');
+const controlDropdown = funcDropdown();
 
-  ul.classList.add('header-dropdown');
-  boxDropdown.appendChild(ul);
-  for (let i = 0; i < items; i++) {
-    const li = document.createElement('li');
-    const link = document.createElement('a');
-    li.classList.add('header-dropdown__item');
-    link.classList.add('header-dropdown__link');
-    link.href = '#';
-    ul.appendChild(li);
-    li.appendChild(link)
+function funcDropdown() {
+  const dropdown = document.createElement('ul');
+  dropdown.classList.add('header-dropdown');
+  return {
+    create: () => {
+      dropdown.insertAdjacentHTML('afterbegin', `
+  <li class="header-dropdown__item"><a class="header-dropdown__link" href="#">My account</a></li>
+  <li class="header-dropdown__item"><a class="header-dropdown__link" href="#">My tasks</a></li>
+  <li class="header-dropdown__item"><a class="header-dropdown__link" href="#">Log out</a></li>`);
+      boxDropdown.appendChild(dropdown);
+
+      document.addEventListener('click', function destroyOutSide (event) {
+        if (!dropdown.contains(event.target) && !btnAvatar.contains(event.target)) {
+          arrowAvatar.classList.remove('active');
+          controlDropdown.destroy();
+        }
+      });
+    },
+    destroy: () => {
+      dropdown.classList.add('hide');
+      setTimeout(()=>{
+        dropdown.classList.remove('hide')
+        dropdown.innerHTML = "";
+      }, 500)
+    }
   }
-  allLinks[0].innerHTML = 'My account';
-  allLinks[1].innerHTML = 'My tasks';
-  allLinks[2].innerHTML = 'Log out';
 };
-createDropdown();
-const dropdown = boxDropdown.querySelector('.header-dropdown');
 
 btnAvatar.addEventListener('click', () => {
-  arrowAvatar.classList.toggle('active');
-  dropdown.classList.toggle('active');
+  if (arrowAvatar.classList.contains('active')){
+    arrowAvatar.classList.remove('active');
+    controlDropdown.destroy();
+  } else{
+    arrowAvatar.classList.add('active');
+    controlDropdown.create();
+  }
 });
 
-document.addEventListener('click', (event) => {
-  if (!dropdown.contains(event.target) && !btnAvatar.contains(event.target)) {
-    arrowAvatar.classList.remove('active');
-    dropdown.classList.remove('active');
-  }
-})
+
 
