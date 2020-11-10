@@ -13,7 +13,7 @@ btnPrev.addEventListener('click', () => {
 
 btnNext.addEventListener('click', () => {
   arrayImg[count].classList.remove('active');
-  count++
+  count++;
   if (count >= arrayImg.length) count = 0;
   arrayImg[count].classList.add('active');
 });

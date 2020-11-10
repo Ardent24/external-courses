@@ -14,6 +14,7 @@
     margin-top: 25px;
     margin-left: 15px;
     position: absolute;
+    max-height: 35px;
 }
 
 .slider {
@@ -30,7 +31,6 @@
     max-width: 600px;
     max-height: 600px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -64,6 +64,15 @@
 .slider-btn:hover {
     opacity: 1;
 }
+
+.slider-btn:active .icon{
+    fill: white;
+}
+
+.slider-btn:focus .icon{
+    fill: rgba(255,255,255,0.3);
+}
+
 
 .slider-prev {
     left: 0;
