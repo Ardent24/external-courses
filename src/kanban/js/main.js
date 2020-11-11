@@ -16,10 +16,10 @@ function funcDropdown() {
     },
     destroy: () => {
       dropdown.classList.add('hide');
-      setTimeout(() => {
+      dropdown.addEventListener('transitionend', () => {
         dropdown.classList.remove('hide')
         dropdown.remove();
-      }, 500)
+      });
     }
   }
 };
