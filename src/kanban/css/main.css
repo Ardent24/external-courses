@@ -117,8 +117,7 @@ body {
     right: -14px;
     box-shadow: -3px 3px 4px black;
     padding: 0.5rem 0;
-    transform: translateY(-300px) scale(0);
-    transition: transform .2s;
+    animation: createDropdown .2s ease-in-out;
 }
 
 .header-dropdown__item:nth-child(2n) {
