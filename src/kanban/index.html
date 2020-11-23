@@ -3,22 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no,
+        initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Kanban</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <?xml version="1.0" encoding="utf-8"?>
-<svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="d-none">
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink" class="d-none">
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="add-plus">
+    <path
+      d="M14 7H9V2C9 1.448 8.552 1 8 1C7.448 1 7 1.448 7 2V7H2C1.448 7 1 7.448 1 8C1 8.552 1.448 9 2 9H7V14C7 14.552 7.448 15 8 15C8.552 15 9 14.552 9 14V9H14C14.552 9 15 8.552 15 8C15 7.448 14.552 7 14 7Z"/>
+  </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 8" id="arrow">
     <path d="M1.415.21L6 4.795 10.585.21 12 1.625l-6 6-6-6L1.415.21z" fill="#fff"></path>
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" id="title-icon">
-    <path d="M37.266 11.602H17.578v1.406h19.688v-1.406zm0 10.195H17.578v1.406h19.688v-1.406zm0 10.195H17.578v1.406h19.688v-1.406zM11.953 10.195a1.41 1.41 0 011.406 1.407v1.406a1.41 1.41 0 01-1.406 1.406h-1.406a1.41 1.41 0 01-1.406-1.406v-1.406a1.41 1.41 0 011.406-1.407h1.406zm0-1.406h-1.406a2.82 2.82 0 00-2.813 2.813v1.406a2.82 2.82 0 002.813 2.812h1.406a2.82 2.82 0 002.813-2.812v-1.406a2.82 2.82 0 00-2.813-2.813zm0 11.601a1.41 1.41 0 011.406 1.407v1.406a1.41 1.41 0 01-1.406 1.406h-1.406a1.41 1.41 0 01-1.406-1.406v-1.406a1.41 1.41 0 011.406-1.406h1.406zm0-1.406h-1.406a2.82 2.82 0 00-2.813 2.813v1.406a2.82 2.82 0 002.813 2.813h1.406a2.82 2.82 0 002.813-2.813v-1.406a2.82 2.82 0 00-2.813-2.813zm0 11.602a1.41 1.41 0 011.406 1.406v1.406a1.41 1.41 0 01-1.406 1.407h-1.406a1.41 1.41 0 01-1.406-1.407v-1.406a1.41 1.41 0 011.406-1.406h1.406zm0-1.406h-1.406a2.82 2.82 0 00-2.813 2.812v1.406a2.82 2.82 0 002.813 2.813h1.406a2.82 2.82 0 002.813-2.813v-1.406a2.82 2.82 0 00-2.813-2.812z" fill="#fff"></path>
+    <path
+      d="M37.266 11.602H17.578v1.406h19.688v-1.406zm0 10.195H17.578v1.406h19.688v-1.406zm0 10.195H17.578v1.406h19.688v-1.406zM11.953 10.195a1.41 1.41 0 011.406 1.407v1.406a1.41 1.41 0 01-1.406 1.406h-1.406a1.41 1.41 0 01-1.406-1.406v-1.406a1.41 1.41 0 011.406-1.407h1.406zm0-1.406h-1.406a2.82 2.82 0 00-2.813 2.813v1.406a2.82 2.82 0 002.813 2.812h1.406a2.82 2.82 0 002.813-2.812v-1.406a2.82 2.82 0 00-2.813-2.813zm0 11.601a1.41 1.41 0 011.406 1.407v1.406a1.41 1.41 0 01-1.406 1.406h-1.406a1.41 1.41 0 01-1.406-1.406v-1.406a1.41 1.41 0 011.406-1.406h1.406zm0-1.406h-1.406a2.82 2.82 0 00-2.813 2.813v1.406a2.82 2.82 0 002.813 2.813h1.406a2.82 2.82 0 002.813-2.813v-1.406a2.82 2.82 0 00-2.813-2.813zm0 11.602a1.41 1.41 0 011.406 1.406v1.406a1.41 1.41 0 01-1.406 1.407h-1.406a1.41 1.41 0 01-1.406-1.407v-1.406a1.41 1.41 0 011.406-1.406h1.406zm0-1.406h-1.406a2.82 2.82 0 00-2.813 2.812v1.406a2.82 2.82 0 002.813 2.813h1.406a2.82 2.82 0 002.813-2.813v-1.406a2.82 2.82 0 00-2.813-2.812z"
+      fill="#fff"></path>
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" id="add">
-    <path d="M11 0C4.9 0 0 4.9 0 11s4.9 11 11 11 11-4.9 11-11S17.1 0 11 0zm5 13h-3v3c0 1.1-.9 2-2 2s-2-.9-2-2v-3H6c-1.1 0-2-.9-2-2s.9-2 2-2h3V6c0-1.1.9-2 2-2s2 .9 2 2v3h3c1.1 0 2 .9 2 2s-.9 2-2 2z" fill="#000"></path>
+    <path
+      d="M11 0C4.9 0 0 4.9 0 11s4.9 11 11 11 11-4.9 11-11S17.1 0 11 0zm5 13h-3v3c0 1.1-.9 2-2 2s-2-.9-2-2v-3H6c-1.1 0-2-.9-2-2s.9-2 2-2h3V6c0-1.1.9-2 2-2s2 .9 2 2v3h3c1.1 0 2 .9 2 2s-.9 2-2 2z"
+      fill="#000"></path>
   </symbol>
 </svg>
 <div class="wrap">
@@ -46,7 +56,86 @@
       </div>
     </div>
   </header>
-  <main class="main"></main>
+  <main class="main">
+    <div class="main__wrapper wrapper">
+      <div class="main-block" data-block="backlog">
+        <header class="main-block__header">
+          <h2 class="main-block__title">Backlog</h2>
+          <div class="main-block__dots">
+            <span class="main-block__dot"></span>
+            <span class="main-block__dot"></span>
+            <span class="main-block__dot"></span>
+          </div>
+        </header>
+        <div class="main-block__body"></div>
+        <footer class="main-block__footer">
+          <button class="main-block__btn">
+            <svg class="main-block__icon">
+              <use xlink:href="#add-plus"></use>
+            </svg>
+            Add card
+          </button>
+        </footer>
+      </div>
+      <div class="main-block" data-block="ready">
+        <header class="main-block__header">
+          <h2 class="main-block__title">ready</h2>
+          <div class="main-block__dots">
+            <span class="main-block__dot"></span>
+            <span class="main-block__dot"></span>
+            <span class="main-block__dot"></span>
+          </div>
+        </header>
+        <div class="main-block__body"></div>
+        <footer class="main-block__footer">
+          <button class="main-block__btn">
+            <svg class="main-block__icon">
+              <use xlink:href="#add-plus"></use>
+            </svg>
+            Add card
+          </button>
+        </footer>
+      </div>
+      <div class="main-block" data-block="inProgress">
+        <header class="main-block__header">
+          <h2 class="main-block__title">in Progress</h2>
+          <div class="main-block__dots">
+            <span class="main-block__dot"></span>
+            <span class="main-block__dot"></span>
+            <span class="main-block__dot"></span>
+          </div>
+        </header>
+        <div class="main-block__body"></div>
+        <footer class="main-block__footer">
+          <button class="main-block__btn">
+            <svg class="main-block__icon">
+              <use xlink:href="#add-plus"></use>
+            </svg>
+            Add card
+          </button>
+        </footer>
+      </div>
+      <div class="main-block" data-block="finished">
+        <header class="main-block__header">
+          <h2 class="main-block__title">finished</h2>
+          <div class="main-block__dots">
+            <span class="main-block__dot"></span>
+            <span class="main-block__dot"></span>
+            <span class="main-block__dot"></span>
+          </div>
+        </header>
+        <div class="main-block__body"></div>
+        <footer class="main-block__footer">
+          <button class="main-block__btn">
+            <svg class="main-block__icon">
+              <use xlink:href="#add-plus"></use>
+            </svg>
+            Add card
+          </button>
+        </footer>
+      </div>
+    </div>
+  </main>
   <footer class="footer">
     <div class="footer-wrapper wrapper">
       <div class="footer-tasks">
@@ -62,6 +151,8 @@
     </div>
   </footer>
 </div>
-<script src="js/main.js"></script>
+<script src="js/create-tasks.js"></script>
+<!--<script src="js/dont-work.js"></script>-->
+<script src="js/dropdown.js"></script>
 </body>
 </html>

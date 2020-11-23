@@ -33,7 +33,6 @@ btnAvatar.addEventListener('click', () => {
     controlDropdown.create();
   }
 });
-
 document.addEventListener('click', (event) => {
   if (!dropdown.contains(event.target) && !btnAvatar.contains(event.target)) {
     arrowAvatar.classList.remove('active');
