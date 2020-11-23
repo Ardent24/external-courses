@@ -118,7 +118,7 @@ taskBlockOrder.forEach((key) => {
     const blockOrder = taskBlockOrder.findIndex(blockKey => key === blockKey);
     const prevBlock = taskBlockOrder[blockOrder - 1];
 
-    dropdown.className = 'main-block__list active';
+    dropdown.className = 'main-block__list';
 
     tasks[prevBlock].forEach(({title, id}) => {
       const item = document.createElement('li');
@@ -127,9 +127,10 @@ taskBlockOrder.forEach((key) => {
       item.innerText = title;
       item.setAttribute('data-id', id)
       dropdown.appendChild(item);
+
       setTimeout(()=>{
-        dropdown.classList.add('active')
-      }, 1000)
+        dropdown.classList.add('active');
+      }, 10);
 
       item.addEventListener('click', (event) => {
         const taskIndex = tasks[prevBlock].findIndex(({id}) => {
@@ -138,9 +139,7 @@ taskBlockOrder.forEach((key) => {
 
         tasks[key] = [...tasks[key], ...tasks[prevBlock].splice(taskIndex, 1),
         ];
-        setTimeout(()=>{
-          dropdown.classList.remove('active')
-        }, 1000)
+
         dropdown.remove();
         btnBlocks[key].disabled = false;
         renderTasks();
