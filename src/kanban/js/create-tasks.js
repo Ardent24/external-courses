@@ -127,6 +127,9 @@ taskBlockOrder.forEach((key) => {
       item.innerText = title;
       item.setAttribute('data-id', id)
       dropdown.appendChild(item);
+      setTimeout(()=>{
+        dropdown.classList.add('active')
+      }, 1000)
 
       item.addEventListener('click', (event) => {
         const taskIndex = tasks[prevBlock].findIndex(({id}) => {
@@ -135,6 +138,9 @@ taskBlockOrder.forEach((key) => {
 
         tasks[key] = [...tasks[key], ...tasks[prevBlock].splice(taskIndex, 1),
         ];
+        setTimeout(()=>{
+          dropdown.classList.remove('active')
+        }, 1000)
         dropdown.remove();
         btnBlocks[key].disabled = false;
         renderTasks();
