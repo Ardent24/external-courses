@@ -210,10 +210,10 @@ body {
     border-radius: 10px;
     padding: 10px 12px;
     margin-top: 1rem;
-    opacity: 0;
+    -opacity: 0;
     transition: .2s;
-    transform: translate(0px, -80px);
-    z-index: -1;
+    -transform: translate(0px, -80px);
+    -z-index: -1;
 }
 
 .main-block__list.active {

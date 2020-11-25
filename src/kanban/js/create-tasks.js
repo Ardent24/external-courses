@@ -1,32 +1,33 @@
-const LS_NAME_TASKS = "tasks";
+const LS_NAME_TASKS = 'tasks';
+const LS_NAME_COUNT = 'id-count';
 
 const initialData = {
   backlog: [
     {
       id: 0,
-      title: "task1",
+      title: 'task1',
     },
     {
       id: 1,
-      title: "task2",
+      title: 'task2',
     },
     {
       id: 2,
-      title: "task3",
+      title: 'task3',
     },
     {
       id: 3,
-      title: "task4",
+      title: 'task4',
     },
     {
       id: 4,
-      title: "task5",
+      title: 'task5',
     },
   ],
   ready: [
     {
       id: 3,
-      title: "task3",
+      title: 'task3',
     },
     {
       id: 4,
@@ -39,12 +40,12 @@ const initialData = {
 
 if (!localStorage.getItem(LS_NAME_TASKS)) {
   localStorage.setItem(LS_NAME_TASKS, JSON.stringify(initialData));
-  localStorage.setItem("id-count", "5");
+  localStorage.setItem(LS_NAME_COUNT, '5');
 }
 
-const tasksString = localStorage.getItem("tasks");
-const tasks = JSON.parse(tasksString);
-let idCount = +localStorage.getItem("id-count");
+const tasksString = localStorage.getItem('tasks');
+const LS_TASKS = JSON.parse(tasksString);
+let idCount = +localStorage.getItem(LS_NAME_COUNT);
 
 const blocks = {
   backlog: document.querySelector('[data-block=backlog] .main-block__body'),
@@ -61,13 +62,13 @@ const btnBlocks = {
 const taskBlockOrder = ['backlog', 'ready', 'inProgress', 'finished'];
 
 const renderTasks = () => {
-  localStorage.setItem("id-count", `${idCount}`);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem('id-count', `${idCount}`);
+  localStorage.setItem('tasks', JSON.stringify(LS_TASKS));
 
   //возвращаем перечисляемые свойства
-  Object.keys(tasks).forEach(key => {
+  Object.keys(LS_TASKS).forEach(key => {
     blocks[key].innerHTML = '';
-    tasks[key].forEach(task => {
+    LS_TASKS[key].forEach(task => {
       const taskText = document.createElement('p');
       taskText.className = 'main-block__txt';
       taskText.innerText = task.title;
@@ -78,7 +79,7 @@ const renderTasks = () => {
     const nextKey = taskBlockOrder[i + 1];
 
     if (!nextKey) return;
-    if (tasks[key].length) {
+    if (LS_TASKS[key].length) {
       btnBlocks[nextKey].disabled = false;
     } else {
       btnBlocks[nextKey].disabled = true;
@@ -97,14 +98,12 @@ taskBlockOrder.forEach((key) => {
       taskText.appendChild(input);
       input.focus();
       input.addEventListener('blur', () => {
-        if (input.value == '') {
+        if (!input.value) {
           input.remove();
           return renderTasks();
         }
 
-        idCount += 1
-
-        tasks[key].push({id: idCount, title: input.value});
+        LS_TASKS[key].push({id: idCount += 1, title: input.value});
         input.remove();
         return renderTasks();
       });
@@ -120,26 +119,22 @@ taskBlockOrder.forEach((key) => {
 
     dropdown.className = 'main-block__list';
 
-    tasks[prevBlock].forEach(({title, id}) => {
+    LS_TASKS[prevBlock].forEach(({title, id}) => {
       const item = document.createElement('li');
 
       item.className = 'main-block__item';
       item.innerText = title;
       item.setAttribute('data-id', id)
       dropdown.appendChild(item);
-
-      setTimeout(()=>{
-        dropdown.classList.add('active');
-      }, 10);
+      dropdown.animate([
+        {transform: 'translate(0, -80px)'},
+        {transform: 'translate(0, 0)'}
+      ], {duration: 50});
 
       item.addEventListener('click', (event) => {
-        const taskIndex = tasks[prevBlock].findIndex(({id}) => {
-          return +id == +event.target.getAttribute('data-id')
-        });
+        const taskIndex = LS_TASKS[prevBlock].findIndex(({id}) => +id === +event.target.getAttribute('data-id'));
 
-        tasks[key] = [...tasks[key], ...tasks[prevBlock].splice(taskIndex, 1),
-        ];
-
+        LS_TASKS[key] = [...LS_TASKS[key], ...LS_TASKS[prevBlock].splice(taskIndex, 1),];
         dropdown.remove();
         btnBlocks[key].disabled = false;
         renderTasks();
