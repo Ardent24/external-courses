@@ -42,7 +42,7 @@ function Calculator() {
   };
 
   this.fetchData = (callback) => {
-    setTimeout(() => callback.bind(this, 500), 1000);
+    setTimeout(() => callback.bind(this, 500)(), 1000);
 
     return this;
   };
