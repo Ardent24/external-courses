@@ -6,21 +6,22 @@ class Hangman {
     this.arrayHyphen = this.arrayWord.map(el => '_');
     this.error = 6;
     this.arrayError = [];
-    this.guess = (value) => {
-      if (this.arrayWord.includes(value)) {
-        this.arrayWord.forEach((el, index) => {
-          if (el === value) this.arrayHyphen[index] = el;
-        });
-        this.getGuessedString();
-      }
-      if (!this.arrayWord.includes(value)) {
-        this.arrayError.push(value)
-        this.error--;
-        console.log(`wrong letter, errors left ${this.error} | ${this.arrayError}`);
-      }
+  }
 
-      return this;
+  guess(value) {
+    if (this.arrayWord.includes(value)) {
+      this.arrayWord.forEach((el, index) => {
+        if (el === value) this.arrayHyphen[index] = el;
+      });
+      this.getGuessedString();
     }
+    if (!this.arrayWord.includes(value)) {
+      this.arrayError.push(value)
+      this.error--;
+      console.log(`wrong letter, errors left ${this.error} | ${this.arrayError}`);
+    }
+
+    return this;
   }
 
   getGuessedString() {
