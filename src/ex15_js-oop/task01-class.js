@@ -1,14 +1,13 @@
 class Candy {
-
-  constructor(brand, weight) {
+  constructor(brand, weight, totalWeight) {
     this.brand = brand;
     this.weight = weight;
+    this.totalWeight = totalWeight;
   }
-
 }
 
-const candyNsk = new Candy('Новосибирские', 55);
-const candyRzn = new Candy('Рязанские', 45);
+const candyNsk = new Candy('Новосибирские', 55, 500);
+const candyRzn = new Candy('Рязанские', 45, 400);
 
 class Present {
   constructor(totalWeight, ...arg) {
@@ -18,28 +17,24 @@ class Present {
 
   createPresent() {
     const totalWeightCandy = +this.totalallWeight / this.arg.length;
-
+    let sum = 0;
     this.arg.forEach(item => {
       console.log(`
       Детский подарок весом: ${this.totalallWeight} состоит из: ${'\r\n'}
           - ${item.brand} каждая конфета весит "${item.weight}грамм" ${'\r\n'}
-          для подарка нам надо "${Math.round(totalWeightCandy / item.weight)} штук"
+          для подарка нам надо "${Math.round(totalWeightCandy / item.weight)} штук ${'\r\n'}
+          общий вес конфет равен ${sum += item.totalWeight} грамм
       `)
     });
   }
 
-  sortCandyWeight() {
-    return this.arg.sort((a, b) => a.weight - b.weight)
+  sortCandyWeight(property) {
+    return this.arg.sort((a, b) => a.property - b.property)
   }
-  sortCandyBrand() {
-    return this.arg.sort((a, b) => a.brand - b.brand)
-  }
+
 }
 
 const childrenPresent = new Present('1000', candyNsk, candyRzn);
 
 childrenPresent.createPresent();
-console.log(childrenPresent.sortCandyWeight());
-console.log(childrenPresent.sortCandyBrand());
-
-// module.exports = candy;
+console.log(childrenPresent.sortCandyWeight('weight'));
