@@ -10,20 +10,16 @@ const computer = new Device('computer', false, 100);
 const luster = new Device('luster', true, 20);
 const tv = new Device('tv', false, 120);
 
-class Room extends Device {
+class Room {
   constructor(room, hours, ...arg) {
-    super();
     this.room = room;
     this.hours = hours;
     this.arg = arg;
   }
 
   powerСonsumption() {
-    let power = 0;
 
-    this.arg.forEach(item => {
-      if (item.switched) power += item.power
-    });
+    const power = this.arg.reduce((acc, item) => (item.switched) ? acc + item.power : acc, 0)
     console.log(`В комнате ${this.room} за ${this.hours}часа, употребляет энергии ${power * this.hours}`)
   }
 }
@@ -32,3 +28,9 @@ const kitchen = new Room('kitchen', 4, computer, luster, tv);
 kitchen.powerСonsumption();
 
 
+// const array1 = [1, 2, 3, 4];
+// const oo = array1.reduce((acc, item) => {
+//   console.log(acc, item)
+//   return acc + item;
+// })
+// console.log(oo)

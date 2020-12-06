@@ -17,11 +17,7 @@ function Room(room, hours, ...arg) {
 const kitchen = new Room('kitchen', 4, computer, luster, tv);
 
 Room.prototype.powerСonsumption = function () {
-  let power = 0;
-
-  this.arg.forEach(item => {
-    if (item.switched) power += item.power;
-  });
+  const power = this.arg.reduce((acc, item) => (item.switched) ? acc + item.power : acc, 0)
   console.log(`В комнате ${this.room} за ${this.hours}часа, употребляет энергии ${power * this.hours}`)
 }
 

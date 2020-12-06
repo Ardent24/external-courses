@@ -16,7 +16,7 @@ class Present {
   }
 
   createPresent() {
-    const totalWeightCandy = +this.totalallWeight / this.arg.length;
+    const totalWeightCandy = this.totalallWeight / this.arg.length;
     let sum = 0;
     this.arg.forEach(item => {
       console.log(`
@@ -34,7 +34,7 @@ class Present {
 
 }
 
-const childrenPresent = new Present('1000', candyNsk, candyRzn);
+const childrenPresent = new Present(1000, candyNsk, candyRzn);
 
 childrenPresent.createPresent();
 console.log(childrenPresent.sortCandyWeight('weight'));
