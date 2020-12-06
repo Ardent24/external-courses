@@ -24,12 +24,12 @@ class Present {
           - ${item.brand} каждая конфета весит "${item.weight}грамм" ${'\r\n'}
           для подарка нам надо "${Math.round(totalWeightCandy / item.weight)} штук ${'\r\n'}
           общий вес конфет равен ${sum += item.totalWeight} грамм
-      `)
+      `);
     });
   }
 
   sortCandyWeight(property) {
-    return this.arg.sort((a, b) => a.property - b.property)
+    return this.arg.sort((a, b) => a.property - b.property);
   }
 
 }

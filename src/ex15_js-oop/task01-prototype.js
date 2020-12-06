@@ -10,8 +10,7 @@ const candyRzn = new Candy('Рязанские', 45, 400);
 function CreatePresent(totalWeight, ...arg) {
   this.totalWeight = totalWeight;
   this.arg = arg;
-  console.log(totalWeight, arg)
-
+  console.log(totalWeight, arg);
 }
 
 const childrenPresent = new CreatePresent(1000, candyNsk, candyRzn);
@@ -25,7 +24,7 @@ CreatePresent.prototype.createPresent = function () {
           - ${item.brand} каждая конфета весит "${item.weight}грамм" ${'\r\n'}
           для подарка нам надо "${Math.round(totalWeightCandy / item.weight)} штук ${'\r\n'}
           общий вес конфет равен ${sum += item.totalWeight} грамм
-      `)
+      `);
   });
 }
 
