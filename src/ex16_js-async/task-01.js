@@ -1,19 +1,15 @@
-function MyFetch(url, response, data) {
-  let xhrPost, xhrGet;
+function myFetch(url, response, data) {
+  return new Promise((resolve, reject) => {
+    let xhr = new XMLHttpRequest();
 
-  xhrPost = xhrGet = new XMLHttpRequest();
-  xhrPost.responseType = xhrGet.responseType = 'json';
+    xhr.responseType = 'json';
+    xhr.open(response, url);
 
-  if (response === 'GET') {
-    xhrGet.open(response, url);
-    xhrGet.onload = () => (xhrGet.status >= 400) ? console.error(xhrGet.response) : console.log(xhrGet.response);
-    return xhrGet.send();
-  }
-  if (response === 'POST') {
-    xhrGet.open(response, url);
-    xhrGet.onload = () => (xhrGet.status >= 400) ? console.error(xhrGet.response) : console.log(xhrGet.response);
-    return xhrGet.send(data);
-  }
+    xhr.onload = () => resolve(xhr.response);
+    xhr.onerror = () => reject(xhr.onerror);
+
+    xhr.send(data);
+  });
 }
 
-const fetch = new MyFetch('https://jsonplaceholder.typicode.com/users/', 'POST', 'data');
+myFetch('https://jsonplaceholder.typicode.com/users/', 'GET', 'data').then(item => console.log(item))
