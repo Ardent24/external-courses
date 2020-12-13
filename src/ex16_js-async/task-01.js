@@ -6,7 +6,7 @@ function myFetch(url, response, data) {
     xhr.open(response, url);
 
     xhr.onload = () => resolve(xhr.response);
-    xhr.onerror = () => reject(xhr.onerror);
+    xhr.onerror = () => reject(xhr.statusText);
 
     xhr.send(data);
   });

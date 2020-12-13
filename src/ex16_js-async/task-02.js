@@ -17,7 +17,7 @@ async function getUsers(nameUser) {
   const response = await fetch(API_USER);
   const responseJSON = await response.json();
   console.log(responseJSON)
-  responseJSON.forEach(item => {
+  responseJSON.filter(item => {
     if(item.username == nameUser) console.log(`${item.name} email:${item.email}`)
   })
 }
