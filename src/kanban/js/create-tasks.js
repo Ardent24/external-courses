@@ -1,5 +1,5 @@
 const LS_NAME_TASKS = 'tasks';
-const LS_NAME_COUNT = 'id-count';
+let taskCount = 'id-count';
 
 const initialData = {
   backlog: [
@@ -40,12 +40,12 @@ const initialData = {
 
 if (!localStorage.getItem(LS_NAME_TASKS)) {
   localStorage.setItem(LS_NAME_TASKS, JSON.stringify(initialData));
-  localStorage.setItem(LS_NAME_COUNT, '5');
+  localStorage.setItem(taskCount, '5');
 }
 
 const tasksString = localStorage.getItem('tasks');
-const LS_TASKS = JSON.parse(tasksString);
-let idCount = +localStorage.getItem(LS_NAME_COUNT);
+const parseTasks = JSON.parse(tasksString);
+let idCount = +localStorage.getItem(taskCount);
 
 const blocks = {
   backlog: document.querySelector('[data-block=backlog] .main-block__body'),
@@ -63,12 +63,12 @@ const taskBlockOrder = ['backlog', 'ready', 'inProgress', 'finished'];
 
 const renderTasks = () => {
   localStorage.setItem('id-count', `${idCount}`);
-  localStorage.setItem('tasks', JSON.stringify(LS_TASKS));
+  localStorage.setItem('tasks', JSON.stringify(parseTasks));
 
   //возвращаем перечисляемые свойства
-  Object.keys(LS_TASKS).forEach(key => {
+  Object.keys(parseTasks).forEach(key => {
     blocks[key].innerHTML = '';
-    LS_TASKS[key].forEach(task => {
+    parseTasks[key].forEach(task => {
       const taskText = document.createElement('p');
       taskText.className = 'main-block__txt';
       taskText.innerText = task.title;
@@ -79,7 +79,7 @@ const renderTasks = () => {
     const nextKey = taskBlockOrder[i + 1];
 
     if (!nextKey) return;
-    if (LS_TASKS[key].length) {
+    if (parseTasks[key].length) {
       btnBlocks[nextKey].disabled = false;
     } else {
       btnBlocks[nextKey].disabled = true;
@@ -103,7 +103,7 @@ taskBlockOrder.forEach((key) => {
           return renderTasks();
         }
 
-        LS_TASKS[key].push({id: idCount += 1, title: input.value});
+        parseTasks[key].push({id: idCount += 1, title: input.value});
         input.remove();
         return renderTasks();
       });
@@ -119,22 +119,18 @@ taskBlockOrder.forEach((key) => {
 
     dropdown.className = 'main-block__list';
 
-    LS_TASKS[prevBlock].forEach(({title, id}) => {
+    parseTasks[prevBlock].forEach(({title, id}) => {
       const item = document.createElement('li');
 
       item.className = 'main-block__item';
       item.innerText = title;
       item.setAttribute('data-id', id)
       dropdown.appendChild(item);
-      dropdown.animate([
-        {transform: 'translate(0, -80px)'},
-        {transform: 'translate(0, 0)'}
-      ], {duration: 50});
 
       item.addEventListener('click', (event) => {
-        const taskIndex = LS_TASKS[prevBlock].findIndex(({id}) => +id === +event.target.getAttribute('data-id'));
+        const taskIndex = parseTasks[prevBlock].findIndex(({id}) => +id === +event.target.getAttribute('data-id'));
 
-        LS_TASKS[key] = [...LS_TASKS[key], ...LS_TASKS[prevBlock].splice(taskIndex, 1),];
+        parseTasks[key] = [...parseTasks[key], ...parseTasks[prevBlock].splice(taskIndex, 1),];
         dropdown.remove();
         btnBlocks[key].disabled = false;
         renderTasks();
