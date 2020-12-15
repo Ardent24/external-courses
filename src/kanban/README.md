@@ -5,13 +5,13 @@
 * используется транспайлер [Babel](https://babeljs.io/) для поддержки современного JavaScript (ES6) в браузерах
 * используется препроцессор [Less](http://lesscss.org/)
 * используется режим dev (режим разработки)
-* используется режим build (режим продакшена)
+* используется режим build (режим продакшн)
 
 ## :hammer_and_wrench: Установка
 * установите [NodeJS](https://nodejs.org/en/) (если требуется) и [Yarn](https://yarnpkg.com/en/docs/install)
 * скачайте необходимые зависимости: ```yarn``` || ```npm install```
 * чтобы начать работу, введите команду: ```yarn dev```  || ```npm run dev``` (режим разработки)
-* чтобы собрать проект, введите команду ```yarn build``` || ```npm run build``` (режим продакшена)
+* чтобы собрать проект, введите команду ```yarn build``` || ```npm run build``` (режим продакшн)
 * чтобы запустить локальный сервер ```yarn serve``` || ```npm run serve``` (режим автообновления)
 
 ## :open_file_folder: Файловая структура
@@ -24,7 +24,7 @@ webpack-asseblyr
 │   ├── img
 │   ├── components
 │   ├── styles
-├── poscc.config.js
+├── postcc.config.js
 ├── webpack.config.js
 ├── package.json
 ├── .babelrc.js
@@ -36,7 +36,7 @@ webpack-asseblyr
     * ```.gitignore``` – запрет на отслеживание файлов Git'ом
     * ```webpack.config.js``` — настройки Webpack
     * ```package.json``` — список зависимостей
-    * ```poscc.config.js``` — настройка автопрефиксов в CSS
+    * ```postcss.config.js``` — настройка автопрефиксов в CSS
 * Папка ```src``` - используется во время разработки:
     * шрифты: ```src/fonts```
     * изображения: ```src/img```
