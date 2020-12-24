@@ -1,0 +1,33 @@
+.header-dropdown {
+  position: absolute;
+  top: 50px;
+  background-color: white;
+  border-radius: 10px;
+  right: -14px;
+  box-shadow: -3px 3px 4px black;
+  padding: 0.5rem 0;
+  transform: translateY(-100px) scale(0);
+  transition: .2s;
+  opacity: 0;
+
+  &.active {
+    z-index: 1;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  &__item:nth-child(2n) {
+    border-top: 1px solid #0067A3;
+    border-bottom: 1px solid #0067A3;
+  }
+
+  &__link {
+    transition: .5s;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+  }
+
+  &__link:hover {
+    color: #0079BF;
+  }
+}

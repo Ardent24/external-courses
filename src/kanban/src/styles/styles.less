@@ -1,0 +1,46 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: #0079BF;
+  min-width: 300px;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.d-none {
+  display: none;
+}
+
+.wrapper {
+  padding-left: 4rem;
+  padding-right: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hover-opacity {
+  opacity: 1;
+  cursor: pointer;
+  transition: .5s;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.hover-color {
+  transition: .5s;
+
+  &:hover {
+    color: #0079BF;
+  }
+}

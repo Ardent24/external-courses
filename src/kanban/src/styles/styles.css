@@ -1,0 +1,30 @@
+.hover-opacity {
+  opacity: 1;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.hover-opacity:hover {
+  opacity: 0.6;
+}
+.hover-color {
+  transition: 0.5s;
+}
+.hover-color:hover {
+  color: #0079BF;
+}
+.header-avatar__icon.active {
+  transform: translateY(-50%) rotate(180deg);
+}
+.header-dropdown.hide {
+  transition: transform 0.2s;
+  transform: translateY(-300px) scale(0);
+}
+@keyframes createDropdown {
+  from {
+    transform: translateY(-300px) scale(0);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+/*# sourceMappingURL=styles.css.map */

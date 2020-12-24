@@ -1,6 +1,6 @@
-export default function () {
+export default () => {
   const LS_NAME_TASKS = 'tasks';
-  let taskCount = 'id-count';
+  const taskCount = 'id-count';
 
   const initialData = {
     backlog: [
@@ -32,7 +32,7 @@ export default function () {
       },
       {
         id: 4,
-        title: "task4",
+        title: 'task4',
       },
     ],
     inProgress: [],
@@ -44,4 +44,9 @@ export default function () {
     localStorage.setItem(taskCount, '5');
   }
 
+  const tasksString = localStorage.getItem('tasks');
+  const parseTasks = JSON.parse(tasksString);
+  let idCount = +localStorage.getItem(taskCount);
+
+  return {parseTasks, idCount};
 }
