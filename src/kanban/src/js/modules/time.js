@@ -1,4 +1,4 @@
-export default () => {
+const time = () => {
   const data = new Date();
   const hour = data.getHours();
   const minutes = data.getMinutes();
@@ -6,3 +6,5 @@ export default () => {
 
   return [hour, minutes, seconds]
 }
+
+export {time}

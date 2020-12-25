@@ -1,4 +1,4 @@
-import time from '../modules/data';
+import {time} from '../modules/time';
 
 const renderTime = () => {
   let [hour, minutes, seconds] = [...time()]
@@ -23,4 +23,4 @@ const renderTime = () => {
   }, 1000);
 }
 
-export default renderTime;
+export {renderTime};

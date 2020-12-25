@@ -1,4 +1,4 @@
-export default app => {
+const createSpriteSvg = app => {
   app.insertAdjacentHTML('afterend', `
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="d-none">
@@ -21,3 +21,5 @@ export default app => {
 </svg>
   `)
 }
+
+export {createSpriteSvg};

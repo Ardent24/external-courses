@@ -1,6 +1,6 @@
-import mock from "../modules/mocks";
+import {mock} from "../modules/mocks";
 
-const taskCount = () => {
+const tasksCount = () => {
   const activeTasks = document.querySelector('.active-task__js');
   const finishTasks = document.querySelector('.finish-task__js');
   const dataMock = mock();
@@ -11,16 +11,16 @@ const taskCount = () => {
   let countActive = 0;
   let countFinish = 0;
 
-  Object.keys(dataMock.parseTasks).forEach(key => {
+  dataMock.parseTasks.forEach(elem => Object.keys(elem).forEach(key => {
     if (key !== 'finished') {
-      dataMock.parseTasks[key].forEach(() => countActive++);
+      elem[key].forEach(() => countActive++);
     } else {
-      dataMock.parseTasks[key].forEach(() => countFinish++);
+      elem[key].forEach(() => countActive++);
     }
-  });
+  }));
 
   activeTasks.innerText = countActive;
   finishTasks.innerText = countFinish;
 }
 
-export default taskCount;
+export {tasksCount};

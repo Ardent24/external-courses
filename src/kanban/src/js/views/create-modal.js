@@ -1,8 +1,8 @@
-import mocks from '../modules/mocks';
-import renderTasks from '../controllers/render-tasks';
+import {mock} from '../modules/mocks';
+import {renderTasks} from '../controllers/render-tasks';
 
 const createModal = (wrapper, blocks) => {
-  const dataMock = mocks();
+  const dataMock = mock();
   const modal = document.createElement('div');
   const modalBlock = document.createElement('div');
   const modalContainer = document.createElement('div');
@@ -29,17 +29,19 @@ const createModal = (wrapper, blocks) => {
   modalContainer.appendChild(input);
 
   input.addEventListener('blur', () => {
-    if (!input.value) {
-      modal.classList.remove('active');
-      modalBlock.classList.remove('active');
-    } else {
-      dataMock.parseTasks[input.value] = [];
+    const obj = {};
+    obj[input.value] = [];
+
+    if (input.value) {
+      dataMock.parseTasks.unshift(obj);
       localStorage.setItem('tasks', JSON.stringify(dataMock.parseTasks));
-      console.log(dataMock.parseTasks)
-      modal.classList.remove('active');
-      modalBlock.classList.remove('active');
+
+      input.value = '';
       renderTasks(blocks);
     }
+
+    modal.classList.remove('active');
+    modalBlock.classList.remove('active');
   })
 
   return {
@@ -55,4 +57,4 @@ const createModal = (wrapper, blocks) => {
   }
 }
 
-export default createModal;
+export {createModal};

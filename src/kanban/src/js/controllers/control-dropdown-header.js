@@ -20,4 +20,4 @@ const controlDropdownHeader = (dropdownHeader) => {
   });
 }
 
-export default controlDropdownHeader;
+export {controlDropdownHeader};

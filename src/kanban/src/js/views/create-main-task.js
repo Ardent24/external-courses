@@ -1,13 +1,20 @@
-export default (wrapper, title) => {
+import img from '/img/basket.png';
+
+const createMainTask = (wrapper, title) => {
   wrapper.insertAdjacentHTML('beforeend', `
     <div class="main-block" data-block="${title}">
+     <a href="#" class="hover-opacity main-block__delete"><img src="${img}" class="main-block__pic" alt=""></a>
     <header class="main-block__header">
       <h2 class="main-block__title">${title}</h2>
-      <button class="main-block__dots">
+      <div class="main-block__box">
+       <button class="main-block__dots">
         <span class="main-block__dot"></span>
         <span class="main-block__dot"></span>
         <span class="main-block__dot"></span>
-      </button>
+        </button>
+   
+      </div>
+      
     </header>
     <div class="main-block__body"></div>
     <footer class="main-block__footer">
@@ -19,3 +26,5 @@ export default (wrapper, title) => {
   </div>
   `)
 }
+
+export {createMainTask};

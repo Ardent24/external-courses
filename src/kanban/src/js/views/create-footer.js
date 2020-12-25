@@ -1,4 +1,4 @@
-export default app => {
+const createFooter = app => {
   app.insertAdjacentHTML('beforeend', `
    <footer class="footer">
     <div class="footer-wrapper wrapper">
@@ -14,3 +14,5 @@ export default app => {
   </footer>
   `)
 }
+
+export {createFooter};

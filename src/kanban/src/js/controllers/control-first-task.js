@@ -1,5 +1,5 @@
-import renderTasks from './render-tasks';
-import tasksCount from "./tasks-count"
+import {renderTasks} from './render-tasks';
+import {tasksCount} from "./tasks-count"
 
 const controlFirstTask = (blocks, dataMock) => {
   const firstBlock = blocks[0];
@@ -21,7 +21,8 @@ const controlFirstTask = (blocks, dataMock) => {
 
         return renderTasks(blocks);
       }
-      Object.values(dataMock.parseTasks)[0].push({id: dataMock.idCount += 1, title: input.value});
+
+      Object.values(dataMock.parseTasks[0])[0].push({id: dataMock.idCount += 1, title: input.value});
 
       localStorage.setItem('id-count', dataMock.idCount);
       localStorage.setItem('tasks', JSON.stringify(dataMock.parseTasks));
@@ -29,9 +30,9 @@ const controlFirstTask = (blocks, dataMock) => {
       input.remove();
 
       tasksCount(dataMock);
-      renderTasks(blocks);
+      return renderTasks(blocks);
     });
   });
 }
 
-export default controlFirstTask;
+export {controlFirstTask};

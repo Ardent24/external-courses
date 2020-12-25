@@ -1,6 +1,6 @@
 import img from '/img/user-avatar.jpg';
 
-export default app => {
+const createHeader = app => {
   app.insertAdjacentHTML('afterbegin', `
  <header class="header">
     <div class="header__wrapper wrapper">
@@ -27,3 +27,5 @@ export default app => {
   </header>
 `)
 }
+
+export {createHeader};

@@ -295,22 +295,22 @@ button {
   padding-left: 1rem;
   padding-right: 1rem;
   align-items: flex-start;
-  flex-wrap: nowrap;
+  width: 100%;
 }
 .main-block {
   background-color: #EBECF0;
   border-radius: 10px;
   flex: 0 0 280px;
   width: 100%;
-  position: relative;
   margin-right: 2rem;
+  position: relative;
 }
 .main-block__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-  padding: 12px;
+  padding: 1.2rem 12px;
 }
 .main-block__title {
   font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -446,6 +446,15 @@ button {
   height: 14px;
   margin-right: 4px;
   transition: fill 0.2s;
+}
+.main-block__box {
+  display: flex;
+  align-items: center;
+}
+.main-block__delete {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.3rem;
 }
 .footer {
   background-color: #0067A3;

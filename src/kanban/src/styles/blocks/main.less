@@ -34,7 +34,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     align-items: flex-start;
-    flex-wrap: nowrap;
+    width: 100%;
   }
 
   &-block {
@@ -45,13 +45,14 @@
     width: 100%;
     position: relative;
     margin-right: 2rem;
+    position: relative;
 
     &__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
-      padding: 12px;
+      padding: 1.2rem 12px;
     }
 
     &__title {
@@ -211,6 +212,17 @@
       height: 14px;
       margin-right: 4px;
       transition: fill .2s;
+    }
+
+    &__box {
+      display: flex;
+      align-items: center;
+    }
+
+    &__delete {
+      position: absolute;
+      right: 0.3rem;
+      top:  0.3rem;
     }
   }
 }
