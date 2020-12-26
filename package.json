@@ -24,10 +24,6 @@
     "jest": "24.9.0",
     "pre-commit": "1.2.2"
   },
-  "pre-commit": [
-    "test",
-    "lint"
-  ],
   "eslintIgnore": [
     "**/test/**/*",
     "/__tests__/**/*",

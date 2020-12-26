@@ -7,6 +7,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -15,7 +17,8 @@ const optimization = () => {
   const configObj = {splitChunks: {chunks: 'all'}};
 
   if (isProd) {
-    configObj.minimizer = [new OptimizeCssAssetWebpackPlugin(),
+    configObj.minimizer = [
+      new OptimizeCssAssetWebpackPlugin(),
       new TerserWebpackPlugin(),
       new ImageMinimizerPlugin({
         minimizerOptions: {
@@ -23,7 +26,7 @@ const optimization = () => {
             ['gifsicle', {interlaced: true}],
             ['jpegtran', {progressive: true}],
             ['optipng', {optimizationLevel: 5}],
-            ['svgo', {plugins: [{removeViewBox: false,},],},],
+            ['svgo', {plugins: [{removeViewBox: false}]}],
           ],
         },
       }),
@@ -37,56 +40,67 @@ const filename = (ext) => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: {main: './index.js'},
+  entry: {main: './app.js'},
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
-    publicPath: ''
+    publicPath: '',
   },
   resolve: {
-    extensions: ['.js', '.json', '.css', '.less', '.png', '.jpg', '.html'],
+    extensions: ['.html', '.css', '.less', '.js', '.json', '.png', '.jpg'],
     alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
       '@': path.resolve(__dirname, 'src'),
-    }
+      '@js': path.resolve(__dirname, 'src/js'),
+    },
   },
   optimization: optimization(),
   devServer: {
     historyApiFallback: true,
     contentBase: path.resolve(__dirname, 'dist'),
     open: true,
-    compress: true,
+    // compress: true,
     hot: true,
     port: 8080,
   },
   devtool: isProd ? false : 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/index.html'), minify: {collapseWhitespace: isProd}
+      template: path.resolve(__dirname, 'src/index.html'), minify: {collapseWhitespace: isProd},
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({filename: filename('css')}),
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin({
       patterns: [{
-        from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, 'dist')
-      }]
-    })
+        from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, 'dist'),
+      }],
+    }),
+    // new SVGSpritemapPlugin('img/svg/**/*.svg')
+    new ESLintPlugin(),
   ],
   module: {
     rules: [
-      {test: /\.html$/, loader: 'html-loader',},
+      {test: /\.html$/, loader: 'html-loader'},
       {
         test: /\.(less|css)$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              auto: /\.module\.\w+$/i,
+              exportLocalsConvention: 'camelCase',
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+            },
+          },
+        }, 'postcss-loader', 'less-loader'],
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [{
           loader: 'file-loader',
           options: {
-            name: `./img/${filename('[ext]')}`
-          }
+            name: `./img/${filename('[ext]')}`,
+          },
         }, {
           loader: ImageMinimizerPlugin.loader,
           options: {
@@ -95,19 +109,19 @@ module.exports = {
               plugins: ['gifsicle'],
             },
           },
-        },]
+        }],
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/, use: [{
           loader: 'file-loader',
           options: {
-            name: `./fonts/${filename('[ext]')}`
-          }
-        }]
+            name: `./fonts/${filename('[ext]')}`,
+          },
+        }],
       },
       {test: /\.xml$/, use: ['xml-loader']},
       {test: /\.csv$/, use: ['csv-loader']},
-      {test: /\.js$/, exclude: /node_modules/, use: ['babel-loader'],},
-    ]
+      {test: /\.js$/, exclude: /node_modules/, use: ['babel-loader', 'eslint-loader']},
+    ],
   },
 }
